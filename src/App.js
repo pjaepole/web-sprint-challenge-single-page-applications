@@ -97,6 +97,8 @@ const App = () => {
       submit={formSubmit}
       disabled={disabled}
       errors={formErrors}
+      initialFormValues={initialFormValues}
+      setFormValues={setFormValues}
       />
       </Route>
       <Route path="/">

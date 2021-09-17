@@ -1,10 +1,11 @@
 import react from 'react';
 
 export default function Pizzaform(props){
-    const {values,change,submit,disabled,errors}=props;
+    const {values,change,submit,disabled,errors,initialFormValues,setFormValues}=props;
     const onSubmit=evt =>{
         evt.preventDefault();
         submit();
+        setFormValues(initialFormValues)
     }
 
     // const routeToConfirmation=()=>{
@@ -75,7 +76,7 @@ export default function Pizzaform(props){
                 type='text'
                 name='specialtext'
                 />
-                <button disabled={disabled}id='order-button'>submit</button>
+                <button disabled={disabled}id='order-button' name='orderbutton'>submit</button>
             </form>
         </div>
     )
