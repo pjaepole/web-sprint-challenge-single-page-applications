@@ -1,5 +1,5 @@
 import React from 'react';
-
+import styled from 'styled-components';
 import { useHistory } from 'react-router';
 
 export default function Home(){
@@ -8,6 +8,7 @@ export default function Home(){
     const routeToOrder =()=>{
         history.push('/pizza');
     }
+    
 
 
 
