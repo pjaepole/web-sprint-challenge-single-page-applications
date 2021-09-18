@@ -1,5 +1,5 @@
 import react from 'react';
-
+import styled from 'styled-components'
 export default function Pizzaform(props){
     const {values,change,submit,disabled,errors,initialFormValues,setFormValues}=props;
     const onSubmit=evt =>{
@@ -16,15 +16,21 @@ export default function Pizzaform(props){
         const valueToUse=type==='checkbox'? checked: value;
         change(name, valueToUse);
     }
-
+    const StyledPizzaform=styled.div`
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+    `
     return(
         <div>
-            <h2>this is from pizzaform</h2>
+            <h2>Build your pizza</h2>
             <div className='errors'>
                 <div>{errors.name}</div>
                 <div>{errors.sizedropdown}</div>
             </div>
+                
             <form id="pizza-form" onSubmit={onSubmit}>
+                
                 <label>name
                 <input
                 id="name-input" 
@@ -32,7 +38,7 @@ export default function Pizzaform(props){
                 onChange={onChange}
                 name='name'
                 />
-                </label>
+                </label><br/>
                 <label>pizza size
                     <select name="sizedropdown" id="size-dropdown" onChange={onChange}>
                         <option value=''>Select one</option>
@@ -40,7 +46,7 @@ export default function Pizzaform(props){
                         <option value='medium'>medium</option>
                         <option value='large'>large</option>
                     </select>
-                </label>
+                </label><br/>
                 
                 <label>Beef
                     <input
@@ -69,15 +75,21 @@ export default function Pizzaform(props){
                     type="checkbox"
                     name="chicken"
                     />
-                </label>
+                </label><br/>
+                <label>Special instructions
                 <input
                 onChange={onChange}
                 id="special-text" 
                 type='text'
                 name='specialtext'
+                placeholder="put special instructions here"
                 />
+                </label><br/>
                 <button disabled={disabled}id='order-button' name='orderbutton'>submit</button>
+               
             </form>
+                
+                
         </div>
     )
 }

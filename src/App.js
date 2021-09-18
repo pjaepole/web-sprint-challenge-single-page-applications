@@ -5,6 +5,7 @@ import Home from "./components/Home"
 import schema from './validation/formSchema'
 import axios from "axios";
 import * as yup from 'yup';
+import styled from 'styled-components'
 
 const App = () => {
   const initialFormValues ={
@@ -77,18 +78,32 @@ const App = () => {
   useEffect(()=>{
     schema.isValid(formValues).then(valid=>setDisabled(!valid))
   },[formValues])
+
+  const StyledNav=styled.nav`
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border: 1px solid black
+
+  `
+  const StyledlinkDiv=styled.div`
+  display:flex;
+  justify-content:space-evenly;
+  align-items:center;
+  width:50%;
+  
+  `
   return (
       <div>
-        <nav>
+        <StyledNav>
           <h2>LAMBDA EATS</h2>
-          <div>
-              <a>Home</a>
-              <a>Shop</a>
-              <Link to="/">Home</Link>
-              <Link id="order-pizza" to="/pizza">link to my form</Link>
+          <StyledlinkDiv>
               
-          </div>
-        </nav>
+              <Link to="/"><button>Home</button></Link>
+              <Link id="order-pizza" to="/pizza"><button>link to my form</button></Link>
+              
+          </StyledlinkDiv>
+        </StyledNav>
       <Switch>
       <Route path="/pizza">
       <Pizzaform
